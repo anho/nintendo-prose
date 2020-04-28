@@ -65,14 +65,47 @@ const StyledBlogPost = styled.div`
 }}
 `;
 
+const StyledList = styled.ul`
+  list-style: none;
+  display: inline-flex;
+  
+  li {
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    list-style-type: none;
+    -webkit-transition: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff!important;
+    -webkit-border-radius: 2px;
+    line-height: 100%;
+    padding: 5px;
+    font-size: 60%;
+    border-right: none;
+    display: inline-block;
+    vertical-align: middle;
+    background: rgb(230, 0, 18);
+    display: inline-block;
+    margin-right: 10px;
+  }
+`;
+
+const CategoryList = ({ categories }) => {
+  return (
+    <StyledList>
+      {categories.map(({fields:{category}}) => {
+        return <li key={category}>{category}</li>;
+      })}
+    </StyledList>
+  );
+};
+
 const BlogPost = ({ entry: { fields } }) => {
   const { author, title, subtitle, image, body, categories } = fields;
   const htmlBody = documentToHtmlString(body);
 
   return (
     <StyledBlogPost>
-      <div></div>
-      <div></div>
+      <CategoryList categories={categories}/>
       <div dangerouslySetInnerHTML={{ __html: htmlBody }}/>
     </StyledBlogPost>
   );
