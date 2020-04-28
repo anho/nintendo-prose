@@ -91,8 +91,6 @@ export class Header extends React.Component {
   render() {
     const { nav } = this.state;
 
-    console.log("I HAVE", nav);
-
     return (
       <>
         <StyledHeader>

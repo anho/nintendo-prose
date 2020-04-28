@@ -12,6 +12,7 @@ export const Col = styled.div`
   display: flex;
   flex-direction: column;
   padding: 15px;
+  flex-grow: 1;
 
   & ~ & {
     padding-left: 0;

@@ -7,6 +7,7 @@ import React from "react";
 import get from "lodash/get";
 import { CONTENT_TYPE_IDS } from "../api/config";
 import { BlogPostTeaser } from "./BlogPostTeaser";
+import { SectionHeading } from "./SectionHeading";
 import BlogPost from "./BlogPost";
 
 function renderAppropriateComponent(entry) {
@@ -17,6 +18,8 @@ function renderAppropriateComponent(entry) {
       return <BlogPostTeaser entry={entry} />;
     case CONTENT_TYPE_IDS.BLOG_POST:
       return <BlogPost entry={entry} />;
+    case CONTENT_TYPE_IDS.SECTION_HEADING:
+      return <SectionHeading entry={entry} />;
     default:
       return null;
   }

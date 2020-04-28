@@ -9,6 +9,10 @@ const StyledBlogPostTeaser = styled.div`
     margin-top: 15px;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   display: flex;
   flex-direction: column;
   background-image: url("${(props) => props.imageUrl}");
