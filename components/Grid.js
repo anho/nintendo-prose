@@ -12,4 +12,8 @@ export const Col = styled.div`
   display: flex;
   flex-direction: column;
   padding: 15px;
+
+  & ~ & {
+    padding-left: 0;
+  }
 `;

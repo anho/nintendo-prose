@@ -5,6 +5,10 @@ import get from "lodash/get";
 const HEIGHT = 385;
 
 const StyledBlogPostTeaser = styled.div`
+  & ~ & {
+    margin-top: 15px;
+  }
+
   display: flex;
   flex-direction: column;
   background-image: url("${(props) => props.imageUrl}");
