@@ -11,4 +11,5 @@ export const Grid = styled.div`
 export const Col = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 15px;
 `;
