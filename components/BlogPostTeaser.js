@@ -95,7 +95,7 @@ export function BlogPostTeaser({
     <StyledBlogPostTeaser imageUrl={imageUrl} displayType={displayType}>
       <div>
         {category && <span className="category">{category}</span>}
-        <span className="title">{title}</span>
+        <a href="/news/2020/04/nintendo_goes_big_with_latest_animal_crossing_new_horizons_tv_ad_campaign"><span className="title">{title}</span></a>
       </div>
       <span className="subtitle">{subtitle}</span>
     </StyledBlogPostTeaser>
