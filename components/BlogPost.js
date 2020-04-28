@@ -13,6 +13,13 @@ const StyledBlogPost = styled.div`
   padding: 15px;
   justify-content: flex-end;
 
+  img {
+    max-width: 50%;
+  }
+
+  .author {
+  }
+
   .category {
     font-family: Roboto,Helvetica,Arial,sans-serif;
     list-style-type: none;
@@ -32,36 +39,31 @@ const StyledBlogPost = styled.div`
     margin-right: 10px;
   }
 
-  ${({ displayType }) => {
-  if (displayType === "teaser") {
-    return `
-      .title {
-        font-family: Roboto,Helvetica,Arial,sans-serif;
-        list-style-type: none;
-        font-weight: 700;
-        font-size: 25px !important;
-        color: #fff!important;
-        font-size: inherit;
-        line-height: 135%;
-      }
-
-      .subtitle {
-        font-family: Roboto,Helvetica,Arial,sans-serif;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        font-size: 100%;
-        font-weight: 700;
-        line-height: 150%;
-        color: #c1c1c1;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        padding-bottom: 0;
-        margin-right: 40px;
-      }   
-      `;
+  .title {
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    list-style-type: none;
+    font-weight: 700;
+    font-size: 25px !important;
+    font-size: inherit;
+    line-height: 135%;
   }
+
+  .subtitle {
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-weight: 700;
+    line-height: 150%;
+    color: #c1c1c1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-bottom: 0;
+    margin-right: 40px;
+  }   
+
 }}
 `;
 
@@ -92,11 +94,42 @@ const StyledList = styled.ul`
 const CategoryList = ({ categories }) => {
   return (
     <StyledList>
-      {categories.map(({fields:{category}}) => {
+      {categories.map(({ fields: { category } }) => {
         return <li key={category}>{category}</li>;
       })}
     </StyledList>
   );
+};
+
+const Title = ({ text }) => {
+  return (<h1 className="title">{text}</h1>);
+};
+
+const SubTitle = ({ text }) => {
+  if (!text) {
+    return null;
+  }
+
+  return (<div className="subtitle">{text}</div>);
+};
+
+const Author = ({ author }) => {
+  const { fields: { name, avatar, handle } } = author;
+
+  return (
+    <div className="author">
+      <Image image={avatar}/> by {name}
+    </div>
+  )
+};
+
+const Image = ({ image }) => {
+  if (!image) {
+    return null;
+  }
+
+  const { fields: { file: { url }, title } } = image;
+  return (<img src={url} alt={title}/>);
 };
 
 const BlogPost = ({ entry: { fields } }) => {
@@ -106,6 +139,10 @@ const BlogPost = ({ entry: { fields } }) => {
   return (
     <StyledBlogPost>
       <CategoryList categories={categories}/>
+      <Title text={title}/>
+      <SubTitle text={subtitle}/>
+      <Author author={author}/>
+      <Image image={image}/>
       <div dangerouslySetInnerHTML={{ __html: htmlBody }}/>
     </StyledBlogPost>
   );
