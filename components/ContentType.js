@@ -7,6 +7,7 @@ import React from "react";
 import get from "lodash/get";
 import { CONTENT_TYPE_IDS } from "../api/config";
 import { BlogPostTeaser } from "./BlogPostTeaser";
+import BlogPost from "./BlogPost";
 
 function renderAppropriateComponent(entry) {
   const contentTypeId = get(entry, "sys.contentType.sys.id");
@@ -14,6 +15,8 @@ function renderAppropriateComponent(entry) {
   switch (contentTypeId) {
     case CONTENT_TYPE_IDS.BLOG_POST_TEASER:
       return <BlogPostTeaser entry={entry} />;
+    case CONTENT_TYPE_IDS.BLOG_POST:
+      return <BlogPost entry={entry} />;
     default:
       return null;
   }

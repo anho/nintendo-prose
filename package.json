@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@contentful/rich-text-html-renderer": "^13.4.0",
     "contentful": "^7.14.3",
     "lodash": "^4.17.15",
     "nan": "^2.14.1",

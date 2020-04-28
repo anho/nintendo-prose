@@ -4,4 +4,5 @@ export const PREVIEW_TOKEN = "R87VAzlgU6c9299zXdH06gbtooQxQnZwqeP98p21MEk";
 
 export const CONTENT_TYPE_IDS = {
   BLOG_POST_TEASER: "blogPostTeaser",
+  BLOG_POST: "blogPost"
 };
