@@ -42,12 +42,12 @@ export default function Site({ item, errorCode }) {
         <Grid cols={columns.length} key={index}>
           {columns.map((column, indexB) => {
             const title = get(column, "fields.content[0].fields.title", "");
-            const entry = column.fields.content[0]
-            console.log('ENTRY', entry)
+            const entries = column.fields.content;
             return (
               <Col key={indexB}>
-                {/* <BlogPostTeaser title={title} /> */}
-                <ContentType entry={entry} />
+                {entries.map((entry, entryIndex) => (
+                  <ContentType entry={entry} key={entryIndex} />
+                ))}
               </Col>
             );
           })}
